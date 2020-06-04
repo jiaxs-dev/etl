@@ -1,0 +1,16 @@
+
+logging:
+  config: classpath:logback-dev.xml
+
+datasource-es:
+  driver: com.mysql.jdbc.Driver
+  username: zhangguangpeng
+  password: ZgPR&!DRv0
+  url: jdbc:mysql://10.2.2.203:33066/phoenix_es
+  type: com.alibaba.druid.pool.DruidDataSource
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait: 60000
+
+filepath: C:\Users\admin\Desktop\question.json

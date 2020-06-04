@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <property name="log.path" value="/usr/local/elastic/logs"/>
+
+    <conversionRule conversionWord="ip"
+                    converterClass="com.dongao.dio.etl.common.log.IpConfig"/>
+    <conversionRule conversionWord="hostname"
+                    converterClass="com.dongao.dio.etl.common.log.HostNameConfig"/>
+    <conversionRule conversionWord="os"
+                    converterClass="com.dongao.dio.etl.common.log.OsConfig"/>
+    <conversionRule conversionWord="javaversion"
+                    converterClass="com.dongao.dio.etl.common.log.JavaVersionConfig"/>
+
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%ip] [%hostname] [%os] [%javaversion] [%p] [%t] [%c] [%C] [%M] [%L] [%m] [%ex{full}]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="question-etl" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/question-etl.log</file>
+        <!-- 循环政策：基于时间创建日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 日志文件名格式 -->
+            <fileNamePattern>${log.path}/question-etl.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%ip] [%hostname] [%os] [%javaversion] [%p] [%t] [%c] [%C] [%M] [%L] [%m] [%ex{full}]%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger level="info" name="com.dongao.dio.questionetl">
+        <appender-ref ref="question-etl"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="stdout"/>
+    </root>
+
+</configuration>

@@ -1,0 +1,16 @@
+
+logging:
+  config: classpath:logback-prod.xml
+
+datasource-es:
+  driver: com.mysql.jdbc.Driver
+  username: phx_subscriber
+  password: b0o!04yD|qX!IM*K
+  url: jdbc:mysql://10.2.2.203:33066/phoenix_es
+  type: com.alibaba.druid.pool.DruidDataSource
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait: 60000
+
+filepath: /usr/local/elastic/question.json

@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: @profile@
+  application:
+    name: etl
+  mail:
+    host: mail.dongao.com
+    port: 25
+    username: teachtest@dongao.com
+    password: Dongao2019@.com
+    to: jiaxiansun@dongao.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
+
+server:
+  servlet:
+    context-path: /
+  port: 9088
+
+elasticsearch:
+  sniffer:
+    retry:
+      millis: 10000
+  limit: 500
+  username: elastic
+  password: elastic
+  security: true
+  ssl: false
+  http:
+    uris: 10.2.0.60:8200
+
+kafka:
+  bootstrap:
+    servers: kafn1.dabig.com:9092,kafn2.dabig.com:9092,kafn3.dabig.com:9092
+  zookeeper: zkn1.dabig.com:2191,zkn2.dabig.com:2181,zkn3.dabig.com:2181
+  topics: test
+  group: test
